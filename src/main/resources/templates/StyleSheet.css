@@ -1,0 +1,33 @@
+body{
+    background-color: lightgreen;
+}
+
+h1{
+    color: red;
+    border: Highlight;
+}
+
+table{
+    border-color: black;
+}
+
+#contStyle{
+    margin-top: 8%;
+    font-size: 130%;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 25px;
+    padding: 3%;
+    border-style: solid;
+    border-width: 1px;
+    position: relative;
+    align-items: center;
+}
+
+h1 {
+    margin: 20px auto;
+    /*width: 50%;*/
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}

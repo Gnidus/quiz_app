@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="">
+    <meta name="author"
+          content="">
+    <link rel="icon"
+          href="../../favicon.ico">
+    <title>Quizes</title>
+
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+
+    <link href="StyleSheet.css"
+          rel="stylesheet"/>
+    <style>
+        body{
+            background-color: lightgray;
+            /*background-image: url("resources/background.jpg");*/
+            /*background-size: cover;*/
+        }
+
+        h1{
+            color: red;
+            border: Highlight;
+        }
+
+        table{
+            border-color: black;
+        }
+
+        #contStyle{
+            margin-top: 8%;
+            font-size: 130%;
+            display: block;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 25px;
+            padding: 3%;
+            border-style: solid;
+            border-width: 1px;
+            position: relative;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 20px auto;
+            /*width: 50%;*/
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!--MENU-->
+<div id="menu" class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <button class="btn btn-primary" type="button" onclick="window.location.href = '';">
+                Strona Główna
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<!--NAD QUIZAMI-->
+<div class="container-fluid">
+    <div class="row">
+        <h1> Wybierz Quiz! </h1>
+    </div>
+</div>
+
+<!--CONTENER Z QUIZAMI-->
+<div class="container" id="contStyle">
+    <div class="row">
+        <div th:each="Quiz: ${quizes}">
+            <div class="col-lg-9 col-sm-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 th:text="${Quiz.title}" class="card-title text-center"></h3>
+                        <p th:text="${Quiz.description}" class="card-text"></p>
+                        <p th:text="${Quiz.date}" class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
