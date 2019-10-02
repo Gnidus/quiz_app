@@ -1,4 +1,7 @@
 package pl.sda.quiz_app.Repositories;
 
-public interface QuizRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import pl.sda.quiz_app.Models.Quiz;
+
+public interface QuizRepository extends JpaRepository<Quiz,Integer> {
 }
