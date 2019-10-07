@@ -66,7 +66,7 @@
 <div id="menu" class="container-fluid">
     <div class="row">
         <div class="col-6">
-            <button class="btn btn-primary" type="button" onclick="window.location.href = '';">
+            <button  class="btn btn-primary" type="button" onclick="window.location.href = '/quizes.html';">
                 Strona Główna
             </button>
 
@@ -92,11 +92,17 @@
                         <td th:text="${questionById.index} + '.'"></td>
                         <td th:text="${questionById.content}"></td>
                     </tr>
-                    <div th:each="QuestionContent: ${questionById.getAnswerList()}" class="card-text">
-                        <tr>
-                            <td th:text="${QuestionContent.content}"></td>
-                        </tr>
-                    </div>
+                    <form action="#" th:action="@{${questionById.index}}"  method="post">
+                        <div th:each="QuestionContent: ${questionById.getAnswerList()}" class="card-text">
+                            <tr>
+                                <input class="form-check-input" type="radio" name="answer" id="answer"
+                                       th:text="${QuestionContent.content}"
+                                       th:object="${questionById}"
+                                       onchange="this.form.submit()"/>
+                            </tr>
+                        </div>
+                    </form>
+
                 </div>
             </div>
     </div>
