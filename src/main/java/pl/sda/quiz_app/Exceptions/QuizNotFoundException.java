@@ -1,4 +1,4 @@
 package pl.sda.quiz_app.Exceptions;
 
-public class QuizNotFoundException {
+public class QuizNotFoundException extends RuntimeException {
 }

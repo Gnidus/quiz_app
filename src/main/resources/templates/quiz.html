@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="utf-8">
@@ -12,10 +13,10 @@
     <link rel="icon"
           href="../../favicon.ico">
 
-    <title>Quizes</title>
+    <title>QUIZ</title>
 
-<!--    <link rel="stylesheet" type="text/css" href="styles.css">-->
-
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -23,8 +24,9 @@
 
 </head>
 <style>
+
     body{
-        background-color: lightblue;
+        background-color: lightgreen;
     }
 
     h1{
@@ -46,7 +48,6 @@
         border-style: solid;
         border-width: 1px;
         position: relative;
-        align-items: center;
     }
 
     h1 {
@@ -56,6 +57,7 @@
         align-items: center;
         display: flex;
     }
+
 </style>
 
 <body>
@@ -72,30 +74,34 @@
     </div>
 </div>
 
-<!--NAD QUIZAMI-->
+
+<!--NAGLOWEK-->
 <div class="container-fluid">
     <div class="row">
-        <h1> Wybierz Quiz! </h1>
+        <h1> You are in the Quiz!</h1>
     </div>
 </div>
 
-<!--CONTENER Z QUIZAMI-->
+<!--KONTENER Z PYRANIAMI-->
 <div class="container" id="contStyle">
-    <div class="row">
-        <div th:each="Quiz: ${quizes}">
+    <div class="row-9">
+            <h3 th:text="${questionById.quiz.title}" class="card-title text-center"></h3>
             <div class="col-lg-9 col-sm-9">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 th:text="${Quiz.title}" class="card-title text-center"></h3>
-                        <p th:text="${Quiz.description}" class="card-text"></p>
-                        <!--<p th:text="${Quiz.date}" class="card-text"></p>-->
-                        <a th:href="@{'quiz' + ${Quiz.id} +'/question/1'}" class="btn btn-primary card-link" onclick="window.location.href = 'quiz.html';"> Rozpocznij Quiz</a>
+                <div th:each="Question: ${questionById}">
+                    <tr>
+                        <td th:text="${questionById.index} + '.'"></td>
+                        <td th:text="${questionById.content}"></td>
+                    </tr>
+                    <div th:each="QuestionContent: ${questionById.getAnswerList()}" class="card-text">
+                        <tr>
+                            <td th:text="${QuestionContent.content}"></td>
+                        </tr>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
+
 
 </body>
 </html>
